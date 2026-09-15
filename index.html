@@ -3,219 +3,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Final Expense Coverage for Ages 50&ndash;80 | Check Eligibility</title>
-<meta name="description" content="Final expense life insurance for ages 50-80. Many plans need no medical exam. Enter your ZIP to check eligibility and speak with a licensed insurance agent.">
+<title>Final Expense Insurance for Ages 50&ndash;80 | Get a Free Quote</title>
+<meta name="description" content="Final expense life insurance for ages 50-80. Many plans need no medical exam. Fill in a short form and a licensed agent will call you with real prices.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Public+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23161E2E'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='15' font-weight='700' fill='%23F5F3EE' text-anchor='middle'%3EFE%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231A5FEB'/%3E%3Ctext x='16' y='22' font-family='Helvetica,Arial' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3EFE%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 
 <div class="adbar">Life insurance advertisement &middot; Not a government agency</div>
 
-<header class="masthead">
-  <div class="wrap masthead-in">
-    <div class="brand">
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top">
       <span class="brand-mark" aria-hidden="true">FE</span>
-      <span>
+      <span class="brand-text">
         <span class="brand-name">Final Expense 2026</span>
         <span class="brand-sub">Licensed insurance agency</span>
       </span>
-    </div>
+    </a>
+    <a class="btn btn-sm" href="#quote">Free quote</a>
   </div>
 </header>
 
-<!-- ============ THE FOLD — headline + the ask, one screen ============ -->
-<section class="fold">
-  <div class="wrap-narrow">
-    <p class="eyebrow">Plan year 2026 &middot; Ages 50&ndash;80</p>
-    <h1 class="display">Final expense coverage for ages 50&ndash;80.</h1>
-    <p class="lede">Many plans require no medical exam. Check eligibility in about twenty seconds.</p>
-    <p class="fold-trust">
-      <span>Licensed agents</span>
-      <span>Coverage from $5,000</span>
-      <span>No exam on many plans</span>
-    </p>
 
-    <div class="doc" id="funnel">
-      <div class="doc-head">
-        <span>Eligibility worksheet</span>
-        <span class="ref">Form FE&ndash;2026</span>
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+
+      <img class="hero-img" src="images/hero.jpg" width="1200" height="900" fetchpriority="high"
+           alt="A smiling older couple sitting together reading a policy document at home.">
+
+      <div class="hero-copy">
+        <p class="eyebrow">Ages 50&ndash;80 &middot; Plan year 2026</p>
+        <h1>Leave them memories, not a bill.</h1>
+        <p class="lede">Final expense life insurance helps cover funeral and final costs, so your family doesn&rsquo;t have to. Many plans need no medical exam.</p>
+        <ul class="ticks">
+          <li>No medical exam on many plans</li>
+          <li>Coverage from $5,000</li>
+          <li>Takes about 60 seconds</li>
+        </ul>
       </div>
 
-      <div class="doc-body">
+    </div>
+  </div>
+</section>
 
-        <!-- Field 1 — location -->
-        <div id="step1">
-          <p class="fieldline"><span>Field 1 of 3</span><span class="bars"><i class="on"></i><i></i><i></i></span></p>
-          <h2 class="q-title">Where do you live?</h2>
-          <form class="zip-form" id="zipForm" novalidate>
-            <div class="zip-field">
-              <label for="zip">ZIP code</label>
-              <input type="tel" id="zip" name="zip" inputmode="numeric" maxlength="5" placeholder="00000" autocomplete="postal-code">
+
+<!-- ============ QUOTE FORM ============ -->
+<section class="quote-sec" id="quote">
+  <div class="wrap">
+    <div class="quote-card">
+
+      <div class="quote-intro">
+        <h2>Get a free quote</h2>
+        <p>Fill in the fields and a licensed agent will call you back with real prices for your state.</p>
+        <p class="req">* Required field</p>
+      </div>
+
+      <div class="quote-form">
+        <form id="leadForm" novalidate>
+          <div class="grid-2">
+            <div class="field">
+              <label for="name">Full name *</label>
+              <input type="text" id="name" name="name" autocomplete="name" placeholder="Jane Smith">
             </div>
-            <button type="submit" class="btn">Check eligibility</button>
-          </form>
-          <p class="err" id="zipErr" role="alert"></p>
-          <p class="fineprint">Three questions. We do not sell your personal information, and nothing here obligates you to buy.</p>
-        </div>
-
-        <!-- Field 2 — age -->
-        <div id="step2" class="hidden">
-          <p class="fieldline"><span>Field 2 of 3</span><span class="bars"><i class="on"></i><i class="on"></i><i></i></span></p>
-          <h2 class="q-title">Are you between 50 and 80 years old?</h2>
-          <div class="opts">
-            <button type="button" class="opt" data-step="2" data-answer="yes"><span class="box"></span>Yes</button>
-            <button type="button" class="opt" data-step="2" data-answer="no"><span class="box"></span>No</button>
+            <div class="field">
+              <label for="phone">Phone number *</label>
+              <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555">
+            </div>
+            <div class="field">
+              <label for="age">Your age *</label>
+              <select id="age" name="age">
+                <option value="">Select your age</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="zip">ZIP code *</label>
+              <input type="tel" id="zip" name="zip" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="00000">
+            </div>
+            <div class="field field-full">
+              <label for="email">Email <span class="opt-tag">(optional)</span></label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com">
+            </div>
           </div>
-        </div>
 
-        <!-- Field 3 — residency -->
-        <div id="step3" class="hidden">
-          <p class="fieldline"><span>Field 3 of 3</span><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i></span></p>
-          <h2 class="q-title">Are you a U.S. citizen or legal resident?</h2>
-          <div class="opts">
-            <button type="button" class="opt" data-step="3" data-answer="yes"><span class="box"></span>Yes</button>
-            <button type="button" class="opt" data-step="3" data-answer="no"><span class="box"></span>No</button>
-          </div>
-        </div>
+          <p class="err" id="formErr" role="alert"></p>
 
-        <!-- Result — pre-qualified -->
-        <div id="pass" class="result hidden">
-          <div class="stamp" id="stamp" aria-hidden="true">
-            <div class="word">Pre-Qualified</div>
-            <div class="sub">Form FE&ndash;2026</div>
+          <button type="submit" class="btn btn-wide">Get my free quote</button>
+
+          <p class="fineprint">By submitting, you consent to be contacted by a licensed insurance agent, including by autodialed or pre-recorded call or text at the number provided. Consent is not a condition of purchase. We do not sell your personal information.</p>
+        </form>
+
+        <div id="thanks" class="thanks hidden">
+          <div class="check" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>
           </div>
-          <h2 class="q-title">You pre-qualify.</h2>
-          <p class="result-copy">Coverage options may be available near <b id="zipOut"></b>. A licensed insurance agent can tell you which plans your state allows and what they cost. Pre-qualification is not an approval or an offer of insurance.</p>
-          <a class="btn btn-confirm btn-wide" href="tel:+18000000000">Call a licensed agent now</a>
+          <h3>Thank you, <span id="nameOut">friend</span>.</h3>
+          <p>We have your request. A licensed agent will call to go over the plans available near <b id="zipOut"></b> and what they cost. This is not an application, and you are not obligated to buy.</p>
+          <a class="btn btn-wide" href="tel:+18000000000">Call a licensed agent now</a>
           <a class="phone-line" href="tel:+18000000000">(800) 000-0000</a>
           <p class="hours">Mon&ndash;Fri 9AM&ndash;6PM EST &middot; Sat 10AM&ndash;2PM EST</p>
         </div>
-
-        <!-- Result — not eligible -->
-        <div id="fail" class="result result-no hidden">
-          <h2 class="q-title">These plans aren&rsquo;t a match.</h2>
-          <p class="result-copy">The plans on this page are written for U.S. citizens and legal residents ages 50&ndash;80. A licensed agent can still talk through what else may be available to you.</p>
-          <a class="btn btn-wide" href="tel:+18000000000">Call a licensed agent</a>
-          <p class="hold restart"><a href="#funnel" id="restart">Start the worksheet over</a></p>
-        </div>
-
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- ============ THE ONE FIGURE ============ -->
-<section class="sec-tight">
-  <div class="wrap-narrow">
-    <div class="figure-row">
-      <span class="label">National median cost<br>of a funeral with viewing and burial</span>
-      <span class="amount">$8,300</span>
-    </div>
-    <p class="source">Source: NFDA 2023 General Price List Study. Costs vary by region and by the services a family chooses. Final expense coverage is designed so that bill doesn&rsquo;t land on the people you leave behind.</p>
-  </div>
-</section>
 
-<!-- ============ WHAT THESE PLANS DO ============ -->
-<section class="sec-tight">
+<!-- ============ THE GAP ============ -->
+<section class="sec sec-soft">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="eyebrow">What these plans do</p>
-      <div class="tick-rule"></div>
-      <h2 class="display">Four things worth knowing.</h2>
+    <p class="eyebrow center">Why families start here</p>
+    <h2 class="center">A small policy keeps a big bill off your family.</h2>
+
+    <div class="gap-row">
+      <div class="gap-card">
+        <span class="gap-num">$8,300</span>
+        <span class="gap-label">Median cost of a funeral<br>with viewing and burial</span>
+      </div>
+      <span class="gap-vs">vs.</span>
+      <div class="gap-card">
+        <span class="gap-num">$255</span>
+        <span class="gap-label">Social Security<br>lump-sum death payment</span>
+      </div>
     </div>
-    <div class="provisions">
-      <div class="provision">
-        <span class="num">i.</span>
-        <h3 class="display">No medical exam on many plans</h3>
-        <p>Some carriers ask a short set of health questions instead.</p>
+
+    <p class="source center">Sources: NFDA 2023 General Price List Study; Social Security Administration. The difference is what families are usually left to cover. Final expense coverage was built to close that gap.</p>
+  </div>
+</section>
+
+
+<!-- ============ BENEFITS ============ -->
+<section class="sec">
+  <div class="wrap">
+    <p class="eyebrow center">What these plans do</p>
+    <h2 class="center">Four things worth knowing.</h2>
+
+    <div class="cards">
+      <div class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4.4-3 8.2-7 9-4-.8-7-4.6-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+        </span>
+        <h3>No medical exam on many plans</h3>
+        <p>Some carriers ask a short set of health questions instead of sending you for an exam.</p>
       </div>
-      <div class="provision">
-        <span class="num">ii.</span>
-        <h3 class="display">Written for ages 50 to 80</h3>
-        <p>Eligibility still depends on the carrier and your state.</p>
+      <div class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M4.5 20c.9-3.8 3.9-5.8 7.5-5.8s6.6 2 7.5 5.8"/></svg>
+        </span>
+        <h3>Written for ages 50 to 80</h3>
+        <p>Eligibility still depends on the carrier and the state you live in.</p>
       </div>
-      <div class="provision">
-        <span class="num">iii.</span>
-        <h3 class="display">You choose the coverage amount</h3>
-        <p>Commonly written from $5,000 up to $50,000.</p>
+      <div class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><path d="M7 12h4"/><circle cx="17" cy="12" r="1.6"/></svg>
+        </span>
+        <h3>You choose the amount</h3>
+        <p>Commonly written from $5,000 up to $50,000, so the premium fits the budget.</p>
       </div>
-      <div class="provision">
-        <span class="num">iv.</span>
-        <h3 class="display">A licensed agent prices it</h3>
-        <p>They review the plans available where you live and the real premiums.</p>
+      <div class="card">
+        <span class="ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="16" rx="2"/><path d="M8.5 9h7M8.5 13h7M8.5 16.5h4"/></svg>
+        </span>
+        <h3>A licensed agent prices it</h3>
+        <p>They review the plans available where you live and give you the real premium.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ — objections only ============ -->
-<section class="sec-tight">
-  <div class="wrap-narrow">
-    <div class="sec-head">
-      <p class="eyebrow">Questions people ask</p>
-      <div class="tick-rule"></div>
-      <h2 class="display">Answered plainly.</h2>
-    </div>
 
-    <details class="faq-item" open>
+<!-- ============ HOW IT WORKS + IMAGE ============ -->
+<section class="sec sec-soft">
+  <div class="wrap">
+    <div class="split">
+
+      <div class="split-copy">
+        <p class="eyebrow">How it works</p>
+        <h2>Three simple steps.</h2>
+        <ol class="steps">
+          <li>
+            <span class="step-n">1</span>
+            <div>
+              <h3>Fill in the form</h3>
+              <p>Name, age, ZIP and phone. About 60 seconds, no paperwork.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-n">2</span>
+            <div>
+              <h3>Answer a few questions</h3>
+              <p>A short health questionnaire on many plans. No medical exam required.</p>
+            </div>
+          </li>
+          <li>
+            <span class="step-n">3</span>
+            <div>
+              <h3>Talk to a licensed agent</h3>
+              <p>They walk you through your options and the real cost. No pressure.</p>
+            </div>
+          </li>
+        </ol>
+        <a class="btn" href="#quote">Get my free quote</a>
+      </div>
+
+      <img class="split-img" src="images/family.jpg" width="1200" height="900" loading="lazy"
+           alt="An older couple laughing together in their kitchen.">
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ FAQ ============ -->
+<section class="sec">
+  <div class="wrap-narrow">
+    <p class="eyebrow center">Questions people ask</p>
+    <h2 class="center">Answered plainly.</h2>
+
+    <details class="faq" open>
       <summary>What is final expense life insurance?</summary>
       <p>Life insurance meant to cover funeral costs and other end-of-life expenses. The policies are deliberately small and simple compared with a full life insurance policy, which is why they are easier to qualify for.</p>
     </details>
 
-    <details class="faq-item">
+    <details class="faq">
       <summary>Do I need a medical exam?</summary>
       <p>Many plans do not require one. Some ask a short set of health questions instead, and some of those policies include a graded death benefit during an initial period &mdash; meaning a limited amount is paid rather than the full benefit if death occurs in that window. Ask the agent to confirm before you apply.</p>
     </details>
 
-    <details class="faq-item">
+    <details class="faq">
       <summary>Who is eligible?</summary>
       <p>Generally U.S. citizens and legal residents ages 50 to 80. Final eligibility is set by the carrier and by the state you live in, and not all plans are available in all states.</p>
     </details>
 
-    <details class="faq-item">
+    <details class="faq">
       <summary>How much does it cost?</summary>
       <p>Premiums depend on the coverage amount, your personal qualifications, and the carrier and state. A licensed agent can price it for your situation on the call.</p>
     </details>
 
-    <details class="faq-item">
+    <details class="faq">
       <summary>How is the benefit paid out?</summary>
       <p>As a lump sum to the beneficiary you name on the policy. They can use it for funeral and burial costs, medical bills, outstanding debts, or anything else &mdash; it is not restricted to funeral services.</p>
+    </details>
+
+    <details class="faq">
+      <summary>Is this a government program?</summary>
+      <p>No. This is an advertisement for life insurance from a licensed insurance agency. It is not affiliated with, endorsed by, or sponsored by any government agency or state burial program.</p>
     </details>
   </div>
 </section>
 
+
 <!-- ============ CLOSING CTA ============ -->
 <section class="closing">
-  <div class="wrap-narrow">
-    <h2 class="display">Get the real numbers for your state.</h2>
-    <p class="lede">One call tells you what final expense coverage costs for someone your age where you live.</p>
-    <a class="btn" href="tel:+18000000000">Call a licensed agent now</a>
-    <a class="phone-line" href="tel:+18000000000">(800) 000-0000</a>
+  <div class="wrap-narrow center">
+    <h2>Get the real numbers for your state.</h2>
+    <p>One short form, or one call, tells you what coverage costs for someone your age where you live.</p>
+    <div class="closing-btns">
+      <a class="btn btn-light" href="#quote">Get my free quote</a>
+      <a class="btn btn-ghost" href="tel:+18000000000">Call (800) 000-0000</a>
+    </div>
     <p class="hours">Mon&ndash;Fri 9AM&ndash;6PM EST &middot; Sat 10AM&ndash;2PM EST</p>
   </div>
 </section>
 
-<!-- ============ COLOPHON ============ -->
-<footer class="colophon">
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
   <div class="wrap">
-    <div class="colophon-rule">
-      <div class="colophon-links">
-        <a href="privacy.html">Privacy policy</a>
-        <a href="terms.html">Terms of use</a>
-        <a href="tel:+18000000000">Contact</a>
-      </div>
-      <div class="disclosure">
-        <p>This is an advertisement for life insurance. This site is operated by a licensed insurance agency and is not affiliated with, endorsed by, or sponsored by any government agency, the federal Medicare program, or any state burial or funeral program.</p>
-        <p>Not all plans are available in all states. Callers will be directed to a licensed insurance agent. Premiums depend on coverage amount, personal qualifications, and may vary by carrier and state. Some policies may require health questions and may include a graded death benefit during an initial period.</p>
-        <p>Coverage amounts, availability, and eligibility are determined by the issuing insurance carrier and are subject to underwriting. Benefit payouts and policy terms are governed solely by the policy documents issued by the carrier. No coverage is in force until an application is approved and the first premium is paid. Pre-qualification on this page is not an offer of insurance, an approval, or a guarantee of coverage.</p>
-        <p>By submitting your information or calling the number on this page, you consent to be contacted by a licensed insurance agent regarding final expense life insurance products, including by telephone, which may be an autodialed or pre-recorded call or text at the number provided. Consent is not a condition of purchase. Message and data rates may apply.</p>
-      </div>
-      <p class="copyline">&copy; 2026 Final Expense 2026 &middot; All rights reserved</p>
+    <div class="footer-links">
+      <a href="privacy.html">Privacy policy</a>
+      <a href="terms.html">Terms of use</a>
+      <a href="tel:+18000000000">Contact</a>
     </div>
+    <div class="disclosure">
+      <p>This is an advertisement for life insurance. This site is operated by a licensed insurance agency and is not affiliated with, endorsed by, or sponsored by any government agency, the federal Medicare program, or any state burial or funeral program.</p>
+      <p>Not all plans are available in all states. Callers will be directed to a licensed insurance agent. Premiums depend on coverage amount, personal qualifications, and may vary by carrier and state. Some policies may require health questions and may include a graded death benefit during an initial period.</p>
+      <p>Coverage amounts, availability, and eligibility are determined by the issuing insurance carrier and are subject to underwriting. Benefit payouts and policy terms are governed solely by the policy documents issued by the carrier. No coverage is in force until an application is approved and the first premium is paid. Submitting this form is not an application and is not an offer of insurance, an approval, or a guarantee of coverage.</p>
+      <p>By submitting your information or calling the number on this page, you consent to be contacted by a licensed insurance agent regarding final expense life insurance products, including by telephone, which may be an autodialed or pre-recorded call or text at the number provided. Consent is not a condition of purchase. Message and data rates may apply.</p>
+    </div>
+    <p class="copyline">&copy; 2026 Final Expense 2026 &middot; All rights reserved</p>
   </div>
 </footer>
 

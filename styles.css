@@ -1,457 +1,377 @@
 /* =========================================================
-   Final Expense 2026 — "The Policy Document" (short page)
-   Direction: the page is set like a certificate of coverage.
-   Structure: the whole ask sits on the first screen; below it,
-   one proof figure, four provisions, five questions, one CTA.
-   Type: Fraunces (display) + Public Sans (body/labels/data).
+   Final Expense 2026 — clear, friendly landing page
+   One typeface, plenty of white space, one blue accent.
    ========================================================= */
 
 /* ---------- 1. Tokens ---------- */
 :root{
-  /* Palette: bond paper, fountain-pen ink, oxblood stamp, verdigris confirm */
-  --paper:#F5F3EE;
-  --paper-bright:#FFFDF9;
-  --ink:#161E2E;
-  --ink-soft:#3D4759;
-  --ink-mute:#6B7486;
-  --seal:#8C2F39;
-  --seal-dark:#6E232C;
-  --seal-wash:#F6EAEA;
-  --verdigris:#2F6B5E;
-  --verdigris-wash:#E7F0EC;
-  --rule:#D8D3C6;
-  --rule-strong:#B9B2A1;
+  --blue:#1A5FEB;
+  --blue-dark:#1449B8;
+  --blue-wash:#E9F1FF;
+  --blue-line:#C9DDFF;
+  --navy:#0F2450;
+  --ink:#1B2437;
+  --ink-soft:#4A5468;
+  --ink-mute:#6E788C;
+  --white:#FFFFFF;
+  --soft:#F4F7FC;
+  --line:#E2E7F0;
+  --red:#C0362C;
+  --green:#127A5B;
 
-  --display:"Fraunces",Georgia,"Times New Roman",serif;
-  --body:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-
-  --measure:70ch;
-  --shadow-doc:0 1px 2px rgba(22,30,46,.06), 0 14px 38px rgba(0,0,0,.28);
+  --font:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --radius:14px;
+  --shadow:0 1px 2px rgba(15,36,80,.05), 0 12px 32px rgba(15,36,80,.09);
 }
 
 /* ---------- 2. Base ---------- */
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:80px}
 
 body{
-  font-family:var(--body);
-  font-size:19px;
-  line-height:1.65;
+  font-family:var(--font);
+  font-size:18px;
+  line-height:1.6;
   color:var(--ink);
-  background:var(--paper);
+  background:var(--white);
   -webkit-font-smoothing:antialiased;
 }
 
-img{max-width:100%}
+img{max-width:100%;display:block}
+ul,ol{list-style:none}
 .hidden{display:none !important}
+.center{text-align:center}
 
-.wrap{width:100%;max-width:1080px;margin-inline:auto;padding-inline:24px}
-.wrap-narrow{width:100%;max-width:768px;margin-inline:auto;padding-inline:24px}
+.wrap{width:100%;max-width:1120px;margin-inline:auto;padding-inline:22px}
+.wrap-narrow{width:100%;max-width:760px;margin-inline:auto;padding-inline:22px}
 
-.sec-tight{padding-block:52px}
+h1,h2,h3{color:var(--navy);line-height:1.15;letter-spacing:-.02em;font-weight:800}
+h1{font-size:clamp(34px,5vw,54px)}
+h2{font-size:clamp(27px,3.6vw,40px)}
+h3{font-size:20px;letter-spacing:-.01em}
 
-a{color:var(--seal)}
-a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
-  outline:3px solid var(--ink);
-  outline-offset:3px;
-  border-radius:2px;
+a{color:var(--blue)}
+a:focus-visible,button:focus-visible,summary:focus-visible,
+input:focus-visible,select:focus-visible{
+  outline:3px solid var(--blue);
+  outline-offset:2px;
+  border-radius:6px;
 }
 
-/* ---------- 3. Type roles ---------- */
 .eyebrow{
-  font-family:var(--body);
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.17em;
-  text-transform:uppercase;
-  color:var(--seal);
+  font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:12px;
 }
 
-.display{
-  font-family:var(--display);
-  font-optical-sizing:auto;
-  font-weight:600;
-  line-height:1.08;
-  letter-spacing:-.015em;
-  color:var(--ink);
-}
+.sec{padding-block:72px}
+.sec-soft{background:var(--soft)}
+.sec h2.center{margin-bottom:38px;max-width:20ch;margin-inline:auto}
 
-h1.display{font-size:clamp(31px,4.6vw,48px)}
-h2.display{font-size:clamp(26px,3.4vw,36px);line-height:1.15}
-h3.display{font-size:20px;line-height:1.25}
-
-.lede{font-size:clamp(17px,1.8vw,20px);color:var(--ink-soft);max-width:var(--measure)}
-
-/* Short oxblood rule that sits under an eyebrow */
-.tick-rule{width:38px;height:3px;background:var(--seal);margin-block:14px 18px}
-.sec-head{max-width:var(--measure);margin-bottom:34px}
-.sec-head p{color:var(--ink-soft)}
-
-/* ---------- 4. Buttons ---------- */
+/* ---------- 3. Buttons ---------- */
 .btn{
   display:inline-block;
-  font-family:var(--body);
-  font-size:19px;
-  font-weight:700;
-  letter-spacing:.01em;
-  color:var(--paper-bright);
-  background:var(--seal);
+  font-family:var(--font);
+  font-size:18px;font-weight:700;
+  color:var(--white);
+  background:var(--blue);
   text-decoration:none;
-  padding:17px 34px;
-  border:0;
-  border-radius:3px;
-  cursor:pointer;
+  padding:15px 30px;
+  border:0;border-radius:9px;
+  cursor:pointer;white-space:nowrap;
   transition:background .15s ease, transform .1s ease;
 }
-.btn:hover{background:var(--seal-dark)}
+.btn:hover{background:var(--blue-dark)}
 .btn:active{transform:translateY(1px)}
 .btn-wide{display:block;width:100%;text-align:center}
-.btn-confirm{background:var(--verdigris)}
-.btn-confirm:hover{background:#24564B}
+.btn-sm{font-size:15px;padding:10px 20px;border-radius:8px}
+.btn-light{background:var(--white);color:var(--blue)}
+.btn-light:hover{background:var(--blue-wash)}
+.btn-ghost{background:transparent;color:var(--white);box-shadow:inset 0 0 0 2px rgba(255,255,255,.55)}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
 
-/* ---------- 5. Disclosure bar + masthead ---------- */
+/* ---------- 4. Top bars ---------- */
 .adbar{
-  background:var(--ink);
-  color:#AEB7C7;
-  font-size:12px;
-  line-height:1.45;
-  letter-spacing:.02em;
-  text-align:center;
-  padding:7px 20px;
+  background:var(--navy);color:#B7C4DC;
+  font-size:12.5px;text-align:center;
+  padding:7px 18px;
 }
 
-.masthead{
-  background:var(--paper-bright);
-  border-bottom:1px solid var(--rule);
-  padding-block:11px;
+.topbar{
+  position:sticky;top:0;z-index:40;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
 }
-.masthead-in{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:11px}
+.topbar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
 .brand-mark{
-  width:34px;height:40px;flex:0 0 34px;
-  border:2px solid var(--seal);
-  border-radius:2px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--display);font-weight:700;font-size:17px;color:var(--seal);
-  background:var(--seal-wash);
+  width:38px;height:38px;flex:0 0 38px;
+  display:grid;place-items:center;
+  background:var(--blue);color:var(--white);
+  border-radius:9px;
+  font-size:15px;font-weight:800;letter-spacing:.04em;
 }
-.brand-name{display:block;font-family:var(--display);font-weight:600;font-size:19px;letter-spacing:-.01em;color:var(--ink);line-height:1.15}
-.brand-sub{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);line-height:1.3}
+.brand-text{display:block;line-height:1.2}
+.brand-name{display:block;font-size:17px;font-weight:800;color:var(--navy)}
+.brand-sub{display:block;font-size:12px;font-weight:600;color:var(--ink-mute)}
 
-/* ---------- 6. The fold: headline and the ask on one screen ---------- */
-.fold{
-  background:var(--ink);
-  color:var(--paper);
-  padding-block:30px 44px;
-  position:relative;
+/* ---------- 5. Hero ---------- */
+.hero{background:var(--blue-wash);padding-block:52px 150px}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
 }
-/* Double rule across the top, like a certificate border */
-.fold:before{
-  content:"";
-  position:absolute;left:0;right:0;top:0;height:6px;
-  background:linear-gradient(to bottom,var(--seal) 0 3px,transparent 3px 4px,var(--seal) 4px 6px);
-}
-.fold .display{color:var(--paper-bright);margin-top:12px}
-.fold .eyebrow{color:#D99AA1}
-.fold .lede{color:#B4BCCB;margin-top:12px;max-width:52ch}
+.hero-img{width:100%;height:auto;aspect-ratio:4/3;border-radius:var(--radius);object-fit:cover}
+.hero h1{margin-bottom:16px}
+.hero .lede{font-size:20px;color:var(--ink-soft);max-width:44ch}
 
-.fold-trust{
-  display:flex;flex-wrap:wrap;gap:6px 24px;
-  margin-top:18px;
-  font-size:12.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#9AA3B4;
+.ticks{margin-top:22px;display:grid;gap:9px}
+.ticks li{
+  position:relative;padding-left:32px;
+  font-size:17px;font-weight:600;color:var(--navy);
 }
-.fold-trust span:before{content:"\2713";color:#D99AA1;margin-right:7px;font-weight:800}
-
-/* ---------- 7. The form card (signature element, now above the fold) ---------- */
-.doc{
-  background:var(--paper-bright);
-  border:1px solid var(--rule-strong);
-  box-shadow:var(--shadow-doc);
-  position:relative;
-  overflow:hidden;
-  margin-top:24px;
-}
-/* Inner certificate hairline */
-.doc:before{
-  content:"";
-  position:absolute;inset:7px;
-  border:1px solid var(--rule);
-  pointer-events:none;
+.ticks li:before{
+  content:"";position:absolute;left:0;top:3px;
+  width:21px;height:21px;border-radius:50%;
+  background:var(--blue) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5 5L20 6.5'/%3E%3C/svg%3E") center/13px no-repeat;
 }
 
-.doc-head{
-  display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;
-  padding:16px 28px 13px;
-  border-bottom:2px solid var(--ink);
-  margin:7px 7px 0;
-  font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute);
+/* Image placeholders — delete .img-ph when real photos go in */
+.img-ph{
+  display:grid;place-content:center;justify-items:center;gap:6px;
+  background:
+    repeating-linear-gradient(45deg,#DCE7FA 0 12px,#E6EEFC 12px 24px);
+  border:2px dashed var(--blue-line);
+  color:#7C8DAE;text-align:center;padding:20px;
 }
-.doc-head .ref{color:var(--seal)}
+.img-ph svg{width:44px;height:44px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.img-ph span{font-size:15px;font-weight:700;letter-spacing:.02em}
+.img-ph small{font-size:12.5px;font-weight:500;opacity:.8}
 
-.doc-body{padding:26px 28px 26px;position:relative}
+/* ---------- 6. Quote card ---------- */
+.quote-sec{background:linear-gradient(to bottom,var(--blue-wash) 0 96px,var(--white) 96px 100%);padding-bottom:16px}
+.quote-card{
+  display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:18px;
+  box-shadow:var(--shadow);
+  padding:38px 40px;
+  margin-top:-96px;
+}
+.quote-intro h2{font-size:clamp(26px,3vw,34px);margin-bottom:10px}
+.quote-intro p{color:var(--ink-soft);font-size:17px}
+.quote-intro .req{margin-top:12px;font-size:14px;color:var(--ink-mute)}
 
-/* Step progress: form field counter, not a progress bar */
-.fieldline{
-  display:flex;align-items:center;gap:12px;
-  font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute);
-  margin-bottom:16px;
+/* Fields */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field-full{grid-column:1 / -1}
+.field label{
+  display:block;font-size:14px;font-weight:700;color:var(--navy);
+  margin-bottom:6px;
 }
-.fieldline .bars{display:flex;gap:5px;flex:1}
-.fieldline .bars i{flex:1;height:4px;background:var(--rule)}
-.fieldline .bars i.on{background:var(--seal)}
-
-.q-title{
-  font-family:var(--display);font-weight:600;
-  font-size:clamp(22px,2.8vw,28px);line-height:1.2;letter-spacing:-.01em;
-  color:var(--ink);margin-bottom:20px;
-}
-
-/* Yes / No as form option boxes */
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.opt{
-  display:flex;align-items:center;gap:14px;
-  background:var(--paper-bright);
-  border:2px solid var(--rule-strong);
-  border-radius:3px;
-  padding:17px 20px;
-  font-family:var(--body);font-size:20px;font-weight:600;color:var(--ink);
-  cursor:pointer;text-align:left;
-  transition:border-color .13s ease, background .13s ease;
-}
-.opt .box{
-  width:24px;height:24px;flex:0 0 24px;
-  border:2px solid var(--rule-strong);border-radius:2px;
-  transition:border-color .13s ease, background .13s ease;
-}
-.opt:hover{border-color:var(--seal);background:var(--seal-wash)}
-.opt:hover .box{border-color:var(--seal);background:var(--seal)}
-
-/* ZIP field, set like a typed form entry */
-.zip-form{display:flex;gap:14px;align-items:stretch}
-.zip-field{flex:1;min-width:0}
-.zip-field label{
-  display:block;font-size:12px;font-weight:700;letter-spacing:.15em;
-  text-transform:uppercase;color:var(--ink-mute);margin-bottom:6px;
-}
-.zip-field input{
+.opt-tag{font-weight:500;color:var(--ink-mute)}
+.field input,
+.field select{
   width:100%;
-  font-family:var(--display);font-weight:600;
-  font-size:26px;letter-spacing:.22em;
+  font-family:var(--font);font-size:17px;font-weight:500;
   color:var(--ink);
-  background:transparent;
-  padding:6px 4px 9px;
-  border:0;border-bottom:2px solid var(--ink);
-  border-radius:0;
+  background:var(--white);
+  padding:13px 14px;
+  border:1.5px solid #CBD3E1;
+  border-radius:9px;
+  transition:border-color .13s ease, box-shadow .13s ease;
 }
-.zip-field input::placeholder{color:#C3BDAE;letter-spacing:.14em;font-weight:500}
-.zip-field input:focus{outline:none;border-bottom-color:var(--seal);background:#FBF6EF}
-.zip-form .btn{align-self:flex-end;white-space:nowrap}
+.field select{
+  appearance:none;
+  padding-right:42px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236E788C' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 14px center;
+  background-size:17px;
+}
+.field input::placeholder{color:#A4AEC0;font-weight:400}
+.field input:focus,
+.field select:focus{
+  outline:none;
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px var(--blue-wash);
+}
 
-.err{
-  color:var(--seal);font-size:16px;font-weight:600;
-  margin-top:10px;min-height:0;
-}
-.err:not(:empty){min-height:24px}
+.err{color:var(--red);font-size:16px;font-weight:600}
+.err:not(:empty){margin-top:14px}
+
+#leadForm .btn-wide{margin-top:18px}
+
 .fineprint{
-  margin-top:18px;padding-top:15px;border-top:1px solid var(--rule);
-  font-size:14.5px;line-height:1.5;color:var(--ink-mute);
+  margin-top:14px;
+  font-size:13.5px;line-height:1.5;color:var(--ink-mute);
 }
 
-/* ---------- 8. Result screens + the stamp ---------- */
-.result .q-title{margin-bottom:12px}
-.result p.result-copy{color:var(--ink-soft);font-size:17px;margin-bottom:24px;max-width:58ch}
-.result .phone-line{
-  display:block;font-family:var(--display);font-weight:700;
-  font-size:clamp(32px,6.4vw,44px);letter-spacing:-.02em;
-  color:var(--ink);text-decoration:none;margin:18px 0 4px;
-}
-.hours{font-size:15px;color:var(--ink-mute)}
-.hold{
-  margin-top:18px;padding-top:15px;border-top:1px solid var(--rule);
-  font-size:15px;color:var(--ink-mute);
-}
+/* Thank-you: the intro copy is stale once the form is gone */
+.quote-card.is-done{grid-template-columns:1fr;max-width:640px;margin-inline:auto;text-align:center}
+.quote-card.is-done .quote-intro{display:none}
+.is-done .thanks .check{margin-inline:auto}
 
-.stamp{
-  position:absolute;top:14px;right:20px;
-  transform:rotate(-9deg);
-  border:3px double var(--seal);
-  border-radius:3px;
-  padding:8px 14px 7px;
-  color:var(--seal);
-  text-align:center;
-  background:rgba(246,234,234,.55);
-  pointer-events:none;
+.thanks .check{
+  width:52px;height:52px;border-radius:50%;
+  display:grid;place-items:center;
+  background:#E4F4EE;margin-bottom:16px;
 }
-.stamp .word{font-family:var(--body);font-size:17px;font-weight:800;letter-spacing:.14em;line-height:1;text-transform:uppercase}
-.stamp .sub{font-family:var(--body);font-size:10px;font-weight:700;letter-spacing:.11em;margin-top:4px;opacity:.85;text-transform:uppercase}
+.thanks .check svg{width:26px;height:26px;fill:none;stroke:var(--green);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.thanks h3{font-size:26px;margin-bottom:10px}
+.thanks p{color:var(--ink-soft);font-size:17px;margin-bottom:22px}
+.phone-line{
+  display:block;text-align:center;
+  font-size:clamp(28px,5vw,36px);font-weight:800;letter-spacing:-.02em;
+  color:var(--navy);text-decoration:none;margin:16px 0 4px;
+}
+.hours{font-size:15px;color:var(--ink-mute);text-align:center}
 
-.stamp-in{animation:stampdown .34s cubic-bezier(.2,1.5,.4,1) .22s both}
-@keyframes stampdown{
-  from{opacity:0;transform:rotate(-9deg) scale(1.75)}
-  to{opacity:1;transform:rotate(-9deg) scale(1)}
-}
-@keyframes stampdown-flat{
-  from{opacity:0;transform:rotate(-4deg) scale(1.6)}
-  to{opacity:1;transform:rotate(-4deg) scale(1)}
-}
-
-.result-no .q-title{color:var(--seal)}
-.restart{font-size:16px;color:var(--ink-mute)}
-
-/* ---------- 9. Cost figure, set as a statement line ---------- */
-.figure-row{
-  display:flex;align-items:baseline;gap:18px;
-  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
-  padding-block:20px;margin-bottom:20px;
-}
-.figure-row .label{
-  font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-mute);flex:1;line-height:1.4;
-}
-.figure-row .amount{
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(44px,8vw,72px);line-height:.9;letter-spacing:-.03em;color:var(--seal);
-}
-.source{font-size:14px;color:var(--ink-mute);max-width:var(--measure)}
-
-/* ---------- 11. Provisions (features) ---------- */
-.provisions{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--rule)}
-.provision{
-  padding:24px 28px 24px 0;
-  border-bottom:1px solid var(--rule);
-}
-.provision:nth-child(odd){padding-right:40px;border-right:1px solid var(--rule)}
-.provision:nth-child(even){padding-left:40px}
-.provision .num{
-  font-family:var(--display);font-weight:700;font-size:15px;
-  color:var(--seal);letter-spacing:.06em;display:block;margin-bottom:7px;
-}
-.provision h3{margin-bottom:5px}
-.provision p{font-size:16.5px;color:var(--ink-soft);line-height:1.5}
-
-/* ---------- 11. FAQ ---------- */
-.faq-item{border-bottom:1px solid var(--rule);padding-block:4px}
-.faq-item summary{
-  display:flex;justify-content:space-between;align-items:center;gap:20px;
-  cursor:pointer;list-style:none;
-  padding-block:18px;
-  font-family:var(--display);font-weight:600;font-size:19.5px;line-height:1.3;color:var(--ink);
-}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary:after{
-  content:"+";color:var(--seal);font-family:var(--body);font-weight:700;font-size:26px;line-height:1;flex:0 0 auto;
-}
-.faq-item[open] summary:after{content:"\2013"}
-.faq-item p{color:var(--ink-soft);font-size:17px;padding-bottom:20px;max-width:64ch}
-
-/* ---------- 12. Closing band ---------- */
-.closing{background:var(--ink);color:var(--paper);padding-block:60px;text-align:center}
-.closing .display{color:var(--paper-bright)}
-.closing p.lede{color:#B4BCCB;margin-inline:auto;margin-block:14px 28px}
-.closing .phone-line{
-  display:block;font-family:var(--display);font-weight:700;
-  font-size:clamp(32px,6.4vw,46px);letter-spacing:-.02em;
-  color:var(--paper-bright);text-decoration:none;margin:20px 0 4px;
-}
-.closing .hours{color:#8E97A8}
-
-/* ---------- 13. Footer ---------- */
-.colophon{
-  background:var(--ink);color:#8E97A8;
-  font-size:14px;line-height:1.6;
-  padding-block:0 52px;
-}
-.colophon-rule{border-top:1px solid #2C3648;padding-top:36px}
-.colophon a{color:#C4CBD8}
-.colophon-links{
-  display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:center;
+/* ---------- 7. The gap figures ---------- */
+.gap-row{
+  display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap;
   margin-bottom:26px;
-  font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
 }
-.disclosure p{margin-bottom:13px;max-width:88ch;margin-inline:auto;text-align:center;font-size:13px}
-.copyline{
-  text-align:center;margin-top:26px;padding-top:20px;border-top:1px solid #2C3648;
-  font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+.gap-card{
+  flex:0 1 268px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:26px 22px;text-align:center;
 }
+.gap-num{display:block;font-size:44px;font-weight:800;letter-spacing:-.03em;color:var(--blue);line-height:1.05}
+.gap-label{display:block;margin-top:8px;font-size:15px;font-weight:600;color:var(--ink-soft)}
+.gap-vs{font-size:15px;font-weight:800;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.1em}
 
-/* ---------- 14. Mobile call bar ---------- */
+.source{font-size:15px;color:var(--ink-mute);max-width:64ch;margin-inline:auto}
+
+/* ---------- 8. Benefit cards ---------- */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.card{
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:28px;
+}
+.card h3{margin-bottom:8px}
+.card p{font-size:16.5px;color:var(--ink-soft)}
+.ico{
+  width:48px;height:48px;border-radius:12px;
+  display:grid;place-items:center;
+  background:var(--blue-wash);margin-bottom:16px;
+}
+.ico svg{width:25px;height:25px;fill:none;stroke:var(--blue);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- 9. How it works ---------- */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:52px;align-items:center}
+.split h2{margin-bottom:26px}
+.split-img{width:100%;height:auto;aspect-ratio:4/3;border-radius:var(--radius);object-fit:cover}
+
+.steps{display:grid;gap:22px;margin-bottom:30px}
+.steps li{display:flex;gap:16px;align-items:flex-start}
+.step-n{
+  width:38px;height:38px;flex:0 0 38px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--blue);color:var(--white);
+  font-size:17px;font-weight:800;
+}
+.steps h3{margin-bottom:3px}
+.steps p{font-size:16.5px;color:var(--ink-soft)}
+
+/* ---------- 10. FAQ ---------- */
+.faq{
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:var(--white);
+  margin-bottom:12px;
+}
+.faq summary{
+  list-style:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:18px 20px;
+  font-size:18px;font-weight:700;color:var(--navy);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{
+  content:"";flex:0 0 14px;width:14px;height:14px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A5FEB' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") center/contain no-repeat;
+  transition:transform .18s ease;
+}
+.faq[open] summary:after{transform:rotate(180deg)}
+.faq p{padding:0 20px 20px;color:var(--ink-soft);font-size:16.5px}
+
+/* ---------- 11. Closing ---------- */
+.closing{background:var(--navy);color:#C9D5EA;padding-block:70px}
+.closing h2{color:var(--white);margin-bottom:12px}
+.closing p{font-size:18px;max-width:52ch;margin-inline:auto}
+.closing-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:26px 0 16px}
+.closing .hours{color:#8E9DBA}
+
+/* ---------- 12. Footer ---------- */
+.footer{background:#0A1A38;color:#8E9DBA;padding-block:38px 44px;font-size:14px}
+.footer-links{display:flex;gap:26px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,.12)}
+.footer-links a{color:#C9D5EA;text-decoration:none;font-weight:600}
+.footer-links a:hover{text-decoration:underline}
+.disclosure{padding-block:20px;display:grid;gap:12px;line-height:1.55;max-width:96ch}
+.copyline{padding-top:16px;border-top:1px solid rgba(255,255,255,.12)}
+
+/* ---------- 13. Mobile call bar ---------- */
 .callbar{
-  display:none;position:fixed;left:0;right:0;bottom:0;z-index:40;
-  background:var(--seal);
-  padding:13px 20px calc(13px + env(safe-area-inset-bottom,0px));
-  box-shadow:0 -3px 20px rgba(22,30,46,.25);
+  display:none;position:fixed;left:0;right:0;bottom:0;z-index:50;
+  background:var(--blue);
+  padding:11px 16px calc(11px + env(safe-area-inset-bottom));
+  box-shadow:0 -6px 20px rgba(15,36,80,.22);
 }
-.callbar a{
-  display:block;text-align:center;text-decoration:none;
-  color:var(--paper-bright);font-weight:700;font-size:20px;letter-spacing:.01em;
+.callbar a{display:block;text-align:center;color:var(--white);font-size:19px;font-weight:800;text-decoration:none}
+
+/* ---------- 14. Responsive ---------- */
+@media (max-width:920px){
+  .quote-card{grid-template-columns:1fr;gap:26px;padding:30px}
+  .split{grid-template-columns:1fr;gap:34px}
+  .split-img{max-height:360px}
 }
 
-/* ---------- 15. Responsive ---------- */
 @media (max-width:760px){
-  body{font-size:18px}
-  .sec-tight{padding-block:40px}
+  body{font-size:17px}
+  .sec{padding-block:52px}
+  .sec h2.center{margin-bottom:28px}
 
-  .masthead{padding-block:9px}
-  .masthead-in{justify-content:center;gap:12px;flex-wrap:nowrap}
-  .brand-sub{font-size:10px;letter-spacing:.1em}
-  .brand-name{font-size:18px}
-  .brand-mark{width:31px;height:36px;flex-basis:31px;font-size:15px}
+  .brand-sub{display:none}
+  .brand-name{font-size:15.5px}
+  .brand-mark{width:34px;height:34px;flex-basis:34px;font-size:14px}
+  .topbar-in{gap:10px}
+  .btn-sm{padding:9px 14px;font-size:14px}
 
-  /* The fold has to hold: headline, one line of copy, trust, and field 1,
-     clear of the sticky call bar. Every rule here is bought vertical space. */
-  .adbar{font-size:11px;padding:6px 16px}
-  .fold{padding-block:18px 30px}
-  .fold .eyebrow{display:none}
-  h1.display{font-size:26px}
-  .fold .display{margin-top:0}
-  .fold .lede{margin-top:9px;font-size:16.5px}
-  .fold-trust{gap:4px 18px;margin-top:13px;font-size:11.5px;letter-spacing:.08em}
-  .doc{margin-top:18px}
-  .doc-body{padding:18px 20px 20px}
-  .doc-head{padding:12px 20px 10px;gap:10px;font-size:10.5px;letter-spacing:.09em;flex-wrap:nowrap}
-  .fieldline{margin-bottom:11px}
-  .q-title{margin-bottom:14px}
-  .fineprint{margin-top:15px;padding-top:13px;font-size:13.5px}
+  .hero{padding-block:26px 108px}
+  .hero-grid{grid-template-columns:1fr;gap:26px}
+  .hero-copy{order:-1}
+  .hero .lede{font-size:18px}
+  .hero-img{aspect-ratio:16/10}
 
-  .opts{grid-template-columns:1fr}
-  .zip-form{flex-direction:column;gap:12px}
-  .zip-form .btn{width:100%;align-self:stretch}
+  .quote-sec{background:linear-gradient(to bottom,var(--blue-wash) 0 78px,var(--white) 78px 100%)}
+  .quote-card{margin-top:-78px;padding:24px 20px;border-radius:14px}
+  .grid-2{grid-template-columns:1fr;gap:14px}
 
-  .provisions{grid-template-columns:1fr}
-  .provision,.provision:nth-child(odd),.provision:nth-child(even){
-    padding:20px 0;border-right:0;padding-left:0;padding-right:0;
-  }
+  .cards{grid-template-columns:1fr;gap:16px}
+  .card{padding:22px}
 
-  .figure-row{flex-direction:column;gap:8px}
+  .gap-row{gap:14px}
+  .gap-card{flex:1 1 100%;padding:20px}
+  .gap-num{font-size:38px}
 
-  /* On narrow screens the stamp sits in the flow rather than over the copy */
-  .stamp{
-    position:static;display:inline-block;
-    transform:rotate(-4deg);
-    margin:0 0 18px 4px;
-  }
-  .stamp-in{animation:stampdown-flat .34s cubic-bezier(.2,1.5,.4,1) .18s both}
+  .closing-btns{flex-direction:column}
+  .closing-btns .btn{width:100%}
 
   .callbar{display:block}
-  body{padding-bottom:76px}
+  body{padding-bottom:74px}
 }
 
-/* Short phones: the supporting line goes before the field does */
-@media (max-width:760px) and (max-height:700px){
-  .fold{padding-block:14px 24px}
-  h1.display{font-size:24px}
-  .fold .lede{display:none}
-  .fold-trust{margin-top:11px}
-  .doc{margin-top:14px}
-}
-
-/* ---------- 16. Reduced motion ---------- */
+/* ---------- 15. Reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   *,*:before,*:after{
     animation-duration:.001ms !important;
-    animation-iteration-count:1 !important;
     transition-duration:.001ms !important;
   }
-  .stamp-in{animation:none;opacity:1}
 }

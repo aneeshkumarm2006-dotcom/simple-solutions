@@ -1,121 +1,120 @@
 /* =========================================================
-   Final Expense 2026 — eligibility worksheet
-   Fields: ZIP -> age 50-80 -> US citizen/resident -> result
-   The card never leaves the first screen, so steps swap in place.
+   Final Expense 2026 — quote form
+   Name, phone, age, ZIP, optional email -> thank-you panel.
+   Nothing is posted anywhere yet: point submit() at your CRM.
    ========================================================= */
 (function () {
   'use strict';
 
-  var SCREENS = ['step1', 'step2', 'step3', 'pass', 'fail'];
-
-  var answers = { zip: '', age: null, resident: null };
+  var MIN_AGE = 50;
+  var MAX_AGE = 80;
 
   function el(id) { return document.getElementById(id); }
 
-  function show(id) {
-    for (var i = 0; i < SCREENS.length; i++) {
-      var node = el(SCREENS[i]);
-      if (node) node.classList.add('hidden');
+  function digits(value) { return (value || '').replace(/\D/g, ''); }
+
+  /* Ages 50-80 in the dropdown, so nobody has to guess the range */
+  function fillAges() {
+    var select = el('age');
+    if (!select) return;
+
+    for (var age = MIN_AGE; age <= MAX_AGE; age++) {
+      var option = document.createElement('option');
+      option.value = String(age);
+      option.textContent = String(age);
+      select.appendChild(option);
     }
-    var target = el(id);
-    if (target) target.classList.remove('hidden');
-
-    keepCardInView();
   }
 
-  /* Only scroll if the card has drifted off screen — no jump on step 1 -> 2 */
-  function keepCardInView() {
-    var doc = el('funnel');
-    if (!doc || !doc.getBoundingClientRect) return;
+  function validate() {
+    var name = el('name').value.trim();
+    var phone = digits(el('phone').value);
+    var age = el('age').value;
+    var zip = digits(el('zip').value);
+    var email = el('email').value.trim();
 
-    var box = doc.getBoundingClientRect();
-    var fits = box.top >= 0 && box.bottom <= (window.innerHeight || 0);
-    if (fits) return;
+    if (name.length < 2) return 'Please enter your full name.';
+    if (phone.length !== 10) return 'Please enter a 10-digit phone number.';
+    if (!age) return 'Please select your age.';
+    if (zip.length !== 5) return 'Please enter a 5-digit ZIP code.';
+    if (email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return 'Please enter a valid email address, or leave it blank.';
 
-    doc.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    return '';
   }
 
-  /* ---- Field 1: ZIP ---- */
-  function submitZip(e) {
+  function submit(e) {
     if (e) e.preventDefault();
 
-    var input = el('zip');
-    var error = el('zipErr');
-    var value = (input.value || '').replace(/\D/g, '');
+    var error = el('formErr');
+    var message = validate();
 
-    if (value.length !== 5) {
-      error.textContent = 'Enter a 5-digit ZIP code to continue.';
-      input.focus();
+    if (message) {
+      error.textContent = message;
       return false;
     }
 
     error.textContent = '';
-    answers.zip = value;
-    show('step2');
+
+    el('nameOut').textContent = el('name').value.trim().split(/\s+/)[0];
+    el('zipOut').textContent = digits(el('zip').value);
+
+    el('leadForm').classList.add('hidden');
+    el('thanks').classList.remove('hidden');
+
+    var card = document.querySelector('.quote-card');
+    if (card) card.classList.add('is-done');
+
+    keepCardInView();
     return false;
   }
 
-  /* ---- Fields 2 and 3: yes / no ---- */
-  function answer(step, yes) {
-    if (step === 2) {
-      answers.age = yes;
-      show(yes ? 'step3' : 'fail');
-      return;
-    }
+  /* Only scroll if the card has drifted off screen */
+  function keepCardInView() {
+    var card = document.querySelector('.quote-card');
+    if (!card || !card.getBoundingClientRect) return;
 
-    answers.resident = yes;
+    var box = card.getBoundingClientRect();
+    if (box.top >= 0 && box.bottom <= (window.innerHeight || 0)) return;
 
-    if (answers.age && yes) {
-      var zipOut = el('zipOut');
-      if (zipOut) zipOut.textContent = answers.zip;
-      show('pass');
-      pressStamp();
-    } else {
-      show('fail');
-    }
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
-  /* ---- The stamp: one orchestrated moment, at the payoff ---- */
-  function pressStamp() {
-    var stamp = el('stamp');
-    if (!stamp) return;
-
-    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (still) return;
-
-    stamp.classList.remove('stamp-in');
-    void stamp.offsetWidth; // restart the animation
-    stamp.classList.add('stamp-in');
+  /* (555) 555-5555 as they type */
+  function formatPhone(value) {
+    var d = digits(value).slice(0, 10);
+    if (d.length < 4) return d;
+    if (d.length < 7) return '(' + d.slice(0, 3) + ') ' + d.slice(3);
+    return '(' + d.slice(0, 3) + ') ' + d.slice(3, 6) + '-' + d.slice(6);
   }
 
-  /* ---- Wire up ---- */
+  function clearError() { el('formErr').textContent = ''; }
+
   document.addEventListener('DOMContentLoaded', function () {
-    var form = el('zipForm');
-    if (form) form.addEventListener('submit', submitZip);
+    fillAges();
+
+    var form = el('leadForm');
+    if (form) form.addEventListener('submit', submit);
+
+    var phone = el('phone');
+    if (phone) {
+      phone.addEventListener('input', function () {
+        this.value = formatPhone(this.value);
+        clearError();
+      });
+    }
 
     var zip = el('zip');
     if (zip) {
       zip.addEventListener('input', function () {
-        this.value = this.value.replace(/\D/g, '').slice(0, 5);
-        el('zipErr').textContent = '';
+        this.value = digits(this.value).slice(0, 5);
+        clearError();
       });
     }
 
-    var buttons = document.querySelectorAll('[data-step]');
-    for (var i = 0; i < buttons.length; i++) {
-      buttons[i].addEventListener('click', function () {
-        answer(parseInt(this.getAttribute('data-step'), 10), this.getAttribute('data-answer') === 'yes');
-      });
-    }
-
-    var restart = el('restart');
-    if (restart) {
-      restart.addEventListener('click', function (e) {
-        e.preventDefault();
-        answers = { zip: '', age: null, resident: null };
-        if (zip) zip.value = '';
-        show('step1');
-      });
+    var others = ['name', 'email', 'age'];
+    for (var i = 0; i < others.length; i++) {
+      var field = el(others[i]);
+      if (field) field.addEventListener('input', clearError);
     }
   });
 })();
