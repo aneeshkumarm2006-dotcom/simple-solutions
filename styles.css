@@ -131,7 +131,7 @@ h3.display{font-size:21px;line-height:1.25}
   top:0;
   z-index:30;
 }
-.masthead-in{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.masthead-in{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:12px}
 .brand-mark{
   width:38px;height:44px;flex:0 0 38px;
@@ -143,9 +143,6 @@ h3.display{font-size:21px;line-height:1.25}
 }
 .brand-name{display:block;font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:-.01em;color:var(--ink);line-height:1.15}
 .brand-sub{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);line-height:1.3}
-.mast-id{text-align:right;color:var(--ink)}
-.mast-id-name{display:block;font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:-.01em;line-height:1.15}
-.mast-id-sub{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);line-height:1.3}
 
 /* ---------- 6. Hero: the certificate header band ---------- */
 .hero{
@@ -473,13 +470,10 @@ h3.display{font-size:21px;line-height:1.25}
   .sec-tight{padding-block:44px}
 
   .masthead{padding-block:12px}
-  .masthead-in{justify-content:space-between;text-align:left;gap:12px;flex-wrap:nowrap}
-  .brand-sub{display:none}
+  .masthead-in{justify-content:center;gap:12px;flex-wrap:nowrap}
+  .brand-sub{font-size:10px;letter-spacing:.1em}
   .brand-name{font-size:18px}
   .brand-mark{width:32px;height:38px;flex-basis:32px;font-size:16px}
-  .mast-id{text-align:right}
-  .mast-id-name{font-size:18px}
-  .mast-id-sub{font-size:10px;letter-spacing:.1em}
 
   .hero{padding-block:52px 118px}
   .form-zone{margin-top:-80px}
