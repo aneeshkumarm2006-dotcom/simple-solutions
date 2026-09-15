@@ -1,6 +1,7 @@
 /* =========================================================
    Final Expense 2026 — eligibility worksheet
    Fields: ZIP -> age 50-80 -> US citizen/resident -> result
+   The card never leaves the first screen, so steps swap in place.
    ========================================================= */
 (function () {
   'use strict';
@@ -8,7 +9,6 @@
   var SCREENS = ['step1', 'step2', 'step3', 'pass', 'fail'];
 
   var answers = { zip: '', age: null, resident: null };
-  var timerStarted = false;
 
   function el(id) { return document.getElementById(id); }
 
@@ -20,8 +20,19 @@
     var target = el(id);
     if (target) target.classList.remove('hidden');
 
+    keepCardInView();
+  }
+
+  /* Only scroll if the card has drifted off screen — no jump on step 1 -> 2 */
+  function keepCardInView() {
     var doc = el('funnel');
-    if (doc) doc.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (!doc || !doc.getBoundingClientRect) return;
+
+    var box = doc.getBoundingClientRect();
+    var fits = box.top >= 0 && box.bottom <= (window.innerHeight || 0);
+    if (fits) return;
+
+    doc.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
   /* ---- Field 1: ZIP ---- */
@@ -59,7 +70,6 @@
       if (zipOut) zipOut.textContent = answers.zip;
       show('pass');
       pressStamp();
-      startTimer();
     } else {
       show('fail');
     }
@@ -76,24 +86,6 @@
     stamp.classList.remove('stamp-in');
     void stamp.offsetWidth; // restart the animation
     stamp.classList.add('stamp-in');
-  }
-
-  /* ---- Worksheet hold timer ---- */
-  function startTimer() {
-    if (timerStarted) return;
-    timerStarted = true;
-
-    var left = 300;
-    var clock = el('clock');
-    if (!clock) return;
-
-    var tick = setInterval(function () {
-      left--;
-      if (left <= 0) { left = 0; clearInterval(tick); }
-      var m = Math.floor(left / 60);
-      var s = left % 60;
-      clock.textContent = m + ':' + (s < 10 ? '0' + s : s);
-    }, 1000);
   }
 
   /* ---- Wire up ---- */
