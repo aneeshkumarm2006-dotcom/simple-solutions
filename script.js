@@ -1,6 +1,6 @@
 /* =========================================================
-   Final Expense 2026 — funnel logic
-   3 steps: ZIP -> age 50-80 -> US citizen/resident -> result
+   Final Expense 2026 — eligibility worksheet
+   Fields: ZIP -> age 50-80 -> US citizen/resident -> result
    ========================================================= */
 (function () {
   'use strict';
@@ -20,19 +20,20 @@
     var target = el(id);
     if (target) target.classList.remove('hidden');
 
-    var card = el('funnel');
-    if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    var doc = el('funnel');
+    if (doc) doc.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
-  /* ---- Step 1: ZIP ---- */
+  /* ---- Field 1: ZIP ---- */
   function submitZip(e) {
     if (e) e.preventDefault();
+
     var input = el('zip');
     var error = el('zipErr');
     var value = (input.value || '').replace(/\D/g, '');
 
     if (value.length !== 5) {
-      error.textContent = 'Please enter a valid 5-digit ZIP code.';
+      error.textContent = 'Enter a 5-digit ZIP code to continue.';
       input.focus();
       return false;
     }
@@ -43,26 +44,41 @@
     return false;
   }
 
-  /* ---- Steps 2 and 3: yes/no ---- */
+  /* ---- Fields 2 and 3: yes / no ---- */
   function answer(step, yes) {
     if (step === 2) {
       answers.age = yes;
-      if (yes) { show('step3'); } else { show('fail'); }
+      show(yes ? 'step3' : 'fail');
       return;
     }
 
     answers.resident = yes;
+
     if (answers.age && yes) {
       var zipOut = el('zipOut');
       if (zipOut) zipOut.textContent = answers.zip;
       show('pass');
+      pressStamp();
       startTimer();
     } else {
       show('fail');
     }
   }
 
-  /* ---- 5:00 hold timer on the pre-qualify screen ---- */
+  /* ---- The stamp: one orchestrated moment, at the payoff ---- */
+  function pressStamp() {
+    var stamp = el('stamp');
+    if (!stamp) return;
+
+    var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (still) return;
+
+    stamp.classList.remove('stamp-in');
+    void stamp.offsetWidth; // restart the animation
+    stamp.classList.add('stamp-in');
+  }
+
+  /* ---- Worksheet hold timer ---- */
   function startTimer() {
     if (timerStarted) return;
     timerStarted = true;
@@ -104,6 +120,8 @@
     if (restart) {
       restart.addEventListener('click', function (e) {
         e.preventDefault();
+        answers = { zip: '', age: null, resident: null };
+        if (zip) zip.value = '';
         show('step1');
       });
     }
