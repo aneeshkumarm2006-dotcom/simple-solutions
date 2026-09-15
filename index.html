@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Final Expense Insurance for Ages 50&ndash;80 | Get a Free Quote</title>
-<meta name="description" content="Final expense life insurance for ages 50-80. Many plans need no medical exam. Fill in a short form and a licensed agent will call you with real prices.">
+<meta name="description" content="Final expense life insurance for ages 50-80. Many plans need no medical exam. Answer two quick questions and a licensed agent will call you with real prices.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -24,66 +24,34 @@
         <span class="brand-sub">Licensed insurance agency</span>
       </span>
     </a>
-    <a class="btn btn-sm" href="#quote">Free quote</a>
+    <a class="btn btn-sm" href="#quote">Check eligibility</a>
   </div>
 </header>
 
 
-<!-- ============ QUOTE FORM ============ -->
+<!-- ============ ELIGIBILITY QUIZ ============ -->
 <section class="quote-sec" id="quote">
   <div class="wrap">
-    <div class="quote-card">
+    <div class="quote-card quiz-card">
 
-      <div class="quote-intro">
-        <h2>Get a free quote</h2>
-        <p>Fill in the fields and a licensed agent will call you back with real prices for your state.</p>
-        <p class="req">* Required field</p>
+      <div class="quiz-step" id="quizStep1" data-quiz-step>
+        <h2 class="quiz-q">Are You between 50-80 years old?</h2>
+        <button type="button" class="quiz-btn quiz-yes" data-quiz-answer>Yes</button>
+        <button type="button" class="quiz-btn quiz-no" data-quiz-answer>No</button>
       </div>
 
-      <div class="quote-form">
-        <form id="leadForm" novalidate>
-          <div class="grid-2">
-            <div class="field">
-              <label for="name">Full name *</label>
-              <input type="text" id="name" name="name" autocomplete="name" placeholder="Jane Smith">
-            </div>
-            <div class="field">
-              <label for="phone">Phone number *</label>
-              <input type="tel" id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="(555) 555-5555">
-            </div>
-            <div class="field">
-              <label for="age">Your age *</label>
-              <select id="age" name="age">
-                <option value="">Select your age</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="zip">ZIP code *</label>
-              <input type="tel" id="zip" name="zip" inputmode="numeric" maxlength="5" autocomplete="postal-code" placeholder="00000">
-            </div>
-            <div class="field field-full">
-              <label for="email">Email <span class="opt-tag">(optional)</span></label>
-              <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com">
-            </div>
-          </div>
+      <div class="quiz-step hidden" id="quizStep2" data-quiz-step>
+        <h2 class="quiz-q">Are You A US Citizen/Resident?</h2>
+        <button type="button" class="quiz-btn quiz-yes" data-quiz-answer>Yes</button>
+        <button type="button" class="quiz-btn quiz-no" data-quiz-answer>No</button>
+      </div>
 
-          <p class="err" id="formErr" role="alert"></p>
-
-          <button type="submit" class="btn btn-wide">Get my free quote</button>
-
-          <p class="fineprint">By submitting, you consent to be contacted by a licensed insurance agent, including by autodialed or pre-recorded call or text at the number provided. Consent is not a condition of purchase. We do not sell your personal information.</p>
-        </form>
-
-        <div id="thanks" class="thanks hidden">
-          <div class="check" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg>
-          </div>
-          <h3>Thank you, <span id="nameOut">friend</span>.</h3>
-          <p>We have your request. A licensed agent will call to go over the plans available near <b id="zipOut"></b> and what they cost. This is not an application, and you are not obligated to buy.</p>
-          <a class="btn btn-wide" href="tel:+18887992497">Call a licensed agent now</a>
-          <a class="phone-line" href="tel:+18887992497">(888) 799-2497</a>
-          <p class="hours">Mon&ndash;Fri 9AM&ndash;6PM EST &middot; Sat 10AM&ndash;2PM EST</p>
-        </div>
+      <div class="quiz-step quiz-result hidden" id="quizStep3" data-quiz-step>
+        <h2 class="quiz-congrats">Congratulations!</h2>
+        <p class="quiz-sub">You Pre-Qualify <span class="quiz-highlight">Make A Quick Call To Speak To A Live Agent!</span></p>
+        <p class="quiz-hold">Your spot is being held. To get started click the button below to speak with an expert.</p>
+        <a class="btn btn-wide quiz-call" href="tel:+18887992497">(888) 799-2497</a>
+        <p class="quiz-timer" id="quizTimer" role="timer" aria-live="polite">05:00</p>
       </div>
 
     </div>
@@ -190,8 +158,8 @@
           <li>
             <span class="step-n">1</span>
             <div>
-              <h3>Fill in the form</h3>
-              <p>Name, age, ZIP and phone. About 60 seconds, no paperwork.</p>
+              <h3>Answer two quick questions</h3>
+              <p>Your age range and citizenship status. Takes about 10 seconds.</p>
             </div>
           </li>
           <li>
@@ -209,7 +177,7 @@
             </div>
           </li>
         </ol>
-        <a class="btn" href="#quote">Get my free quote</a>
+        <a class="btn" href="#quote">Check if I pre-qualify</a>
       </div>
 
       <img class="split-img" src="images/family.jpg" width="1200" height="900" loading="lazy"
@@ -290,9 +258,9 @@
 <section class="closing">
   <div class="wrap-narrow center">
     <h2>Get the real numbers for your state.</h2>
-    <p>One short form, or one call, tells you what coverage costs for someone your age where you live.</p>
+    <p>One short quiz, or one call, tells you what coverage costs for someone your age where you live.</p>
     <div class="closing-btns">
-      <a class="btn btn-light" href="#quote">Get my free quote</a>
+      <a class="btn btn-light" href="#quote">Check if I pre-qualify</a>
       <a class="btn btn-ghost" href="tel:+18887992497">Call (888) 799-2497</a>
     </div>
     <p class="hours">Mon&ndash;Fri 9AM&ndash;6PM EST &middot; Sat 10AM&ndash;2PM EST</p>
