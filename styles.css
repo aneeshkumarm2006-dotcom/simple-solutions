@@ -143,9 +143,9 @@ h3.display{font-size:21px;line-height:1.25}
 }
 .brand-name{display:block;font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:-.01em;color:var(--ink);line-height:1.15}
 .brand-sub{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-mute);line-height:1.3}
-.mast-phone{text-align:right;text-decoration:none;color:var(--ink)}
-.mast-phone .lbl{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute)}
-.mast-phone .num{font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:-.01em}
+.mast-id{text-align:right;color:var(--ink)}
+.mast-id-name{display:block;font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:-.01em;line-height:1.15}
+.mast-id-sub{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);line-height:1.3}
 
 /* ---------- 6. Hero: the certificate header band ---------- */
 .hero{
@@ -477,9 +477,9 @@ h3.display{font-size:21px;line-height:1.25}
   .brand-sub{display:none}
   .brand-name{font-size:18px}
   .brand-mark{width:32px;height:38px;flex-basis:32px;font-size:16px}
-  .mast-phone{text-align:right}
-  .mast-phone .lbl{font-size:10px;letter-spacing:.1em}
-  .mast-phone .num{font-size:18px}
+  .mast-id{text-align:right}
+  .mast-id-name{font-size:18px}
+  .mast-id-sub{font-size:10px;letter-spacing:.1em}
 
   .hero{padding-block:52px 118px}
   .form-zone{margin-top:-80px}
