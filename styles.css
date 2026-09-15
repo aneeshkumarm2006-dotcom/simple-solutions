@@ -18,8 +18,8 @@
   --line:#E2E7F0;
   --red:#C0362C;
   --green:#127A5B;
-  --quiz-yes:#0E3D3A;
-  --quiz-no:#960C0C;
+  --quiz-yes:var(--blue);
+  --quiz-no:var(--red);
 
   --font:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   --radius:14px;
@@ -176,10 +176,11 @@ input:focus-visible,select:focus-visible{
   cursor:pointer;transition:filter .13s ease, transform .1s ease;
 }
 .quiz-btn:last-child{margin-bottom:0}
-.quiz-btn:hover{filter:brightness(1.08)}
 .quiz-btn:active{transform:translateY(1px)}
 .quiz-yes{background:var(--quiz-yes)}
+.quiz-yes:hover{background:var(--blue-dark)}
 .quiz-no{background:var(--quiz-no)}
+.quiz-no:hover{filter:brightness(1.1)}
 
 .quiz-result{text-align:center}
 .quiz-congrats{font-size:clamp(26px,3.4vw,32px);margin-bottom:14px}
@@ -191,7 +192,7 @@ input:focus-visible,select:focus-visible{
   font-size:clamp(22px,3.2vw,27px);letter-spacing:-.01em;
   padding:20px 20px;
 }
-.quiz-call:hover{background:var(--quiz-yes);filter:brightness(1.08)}
+.quiz-call:hover{background:var(--blue-dark)}
 .quiz-timer{
   margin-top:16px;font-size:18px;font-weight:800;color:var(--red);
   font-variant-numeric:tabular-nums;
